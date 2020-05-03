@@ -1,4 +1,5 @@
-There are many types of security systems available today which use RFID,password,PIN,patterns,fingerprint,retina,iris,face,etc for authentication.
+There are many types of security systems available today which use RFID, password, PIN, patterns, fingerprint,
+iris, face,etc for authentication.
 This project is prototype for low cost password/PIN protected lock system.
 
 The components used for lock system are:
