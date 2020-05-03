@@ -1,0 +1,11 @@
+The self balancing bot is a two-wheeled robot that balances vertically using 
+closed loop algorithm-PID.
+
+The robot follows inverted pendulum principle.It is required to tune the correct values
+of Ki,Kp and Kd to assure the stability of bot.
+
+This self balancing bot is controlled using xbee module.
+
+the robot uses IMU system i.e.Accelerometer and Gyroscope to measure angle to inclination 
+and rotaional velocity.These values are used to attain stability of the robot.
+The IMU used is MPU6050 sensor.
