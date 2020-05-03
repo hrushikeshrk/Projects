@@ -1,0 +1,73 @@
+#include<LPC21XX.h>
+#include "uartfunctions.h"
+#include "lcdfunctions.h"
+
+int main()
+{
+	char plaintxt[10],ciphertxt[10],dplaintxt[10];
+	int i;
+	int count=0;
+	char key[2]="  ";
+	uartinit();
+	lcd_init();
+	clearDisplay();
+  
+	uartwrite("\nEnter message :");
+	delay(50000);
+	for(i=0;i<10;i++)
+	{
+		plaintxt[i]=uartread();
+		uartwritech(plaintxt[i]);
+	}
+
+	
+
+	uartwrite("\nEnter the key  :");
+	key[0]=uartread();
+	uartwritech(key[0]);
+
+	
+	uartwrite("\nCipher text is :");
+	for(i=0;i<10;i++)
+	{
+		ciphertxt[i]=plaintxt[i]+key[0];
+	}
+	uartwrite(ciphertxt);
+	uartwrite("\n");
+	
+	
+	
+	//DECRYPTION
+	uartwrite("\nDecryption");
+
+	delay(500000);
+		uartwrite("\nEnter the key value :");
+		key[1]=uartread();
+		uartwritech(key[1]);
+	
+
+		delay(50000);
+		if(!(key[0]==key[1])&&count<3)
+		{
+				uartwrite("\nEntered key is incorrect\n");
+				count++;
+		}
+	
+	if(count==3)
+	{
+			uartwrite("\nMaximum attempts to enter key are reached\n\n");
+			return(0);
+	}
+	key[0]=' ';
+	for(i=0;i<10;i++)
+	{
+		dplaintxt[i]=ciphertxt[i]-key[1];
+	}
+	uartwrite("\nOriginal message:");
+	uartwrite(dplaintxt);
+	uartwrite("\n\n\n");
+	
+	LCD("Original msg",dplaintxt);
+	delay(50000000);
+	return(0);
+}
